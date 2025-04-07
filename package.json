@@ -2,6 +2,13 @@
   "name": "personal-finance-project",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
+  "author": "Alec REMOND",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rockethelll/app-finance"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
