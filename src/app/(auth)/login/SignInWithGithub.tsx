@@ -9,12 +9,13 @@ export const SignInWithGithub = () => {
   const [isLoading, setIsLoading] = useState(false);
   return (
     <Button
+    className='mb-8'
       disabled={isLoading}
       onClick={() => {
         authClient.signIn.social(
           {
             provider: 'github',
-            callbackURL: '/',
+            callbackURL: '/dashboard',
           },
           {
             onRequest: () => {
@@ -32,7 +33,7 @@ export const SignInWithGithub = () => {
         );
       }}
     >
-      {isLoading ? 'Loading...' : 'Continue with GitHub'}
+      {isLoading ? 'Loading...' : 'Login with GitHub'}
     </Button>
   );
 };

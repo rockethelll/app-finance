@@ -1,0 +1,41 @@
+// import { NextRequest, NextResponse } from 'next/server';
+// import { getSessionCookie } from 'better-auth/cookies';
+
+// const authRoutes = ['/login', '/signup'];
+// const passwordRoutes = ['/reset-password', '/forgot-password'];
+
+// export async function middleware(request: NextRequest) {
+//   const pathName = request.nextUrl.pathname;
+//   const isAuthRoute = authRoutes.includes(pathName);
+//   const isPasswordRoute = passwordRoutes.includes(pathName);
+//   const isRootPath = pathName === '/';
+
+//   const sessionCookie = getSessionCookie(request, {
+//     cookieName: 'session_token',
+//     cookiePrefix: 'better-auth',
+//   });
+
+//   console.log('sessionCookie', sessionCookie);
+
+//   if (isRootPath) {
+//     return NextResponse.redirect(
+//       new URL(sessionCookie ? '/dashboard' : '/login', request.url),
+//     );
+//   }
+
+//   if (!sessionCookie && !isAuthRoute && !isPasswordRoute) {
+//     return NextResponse.redirect(new URL('/login', request.url));
+//   }
+
+//   if (sessionCookie && isAuthRoute) {
+//     return NextResponse.redirect(new URL('/dashboard', request.url));
+//   }
+
+//   return NextResponse.next();
+// }
+
+// export const config = {
+//   matcher: [
+//     '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
+//   ],
+// };
