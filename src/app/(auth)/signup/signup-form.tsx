@@ -4,19 +4,22 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
-import { signupUser } from '@/lib/server';
 import EyePassword from '@/components/eye-password';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { signupSchema, SignupSchema } from '@/lib/schemas';
+import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
+import { signUp } from '@/lib/auth-client';
 
 const SignupForm = () => {
+  const router = useRouter();
   const [isView, setIsView] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    setError,
   } = useForm<SignupSchema>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -27,17 +30,26 @@ const SignupForm = () => {
   });
 
   const onSubmit = async (data: SignupSchema) => {
-    try {
-      await signupUser(data);
-    } catch (err) {
-      setError('root', {
-        message: err instanceof Error ? err.message : 'Something went wrong',
-      });
-    }
+    await signUp.email(
+      {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      },
+      {
+        onSuccess: () => {
+          toast.success('Signed up successfully');
+          router.push('/dashboard');
+        },
+        onError: (ctx: { error: { message: string } }) => {
+          toast.error(ctx.error.message);
+        },
+      },
+    );
   };
 
   return (
-    <form className="" onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       {errors.root && (
         <div className="p-3 mb-4 text-sm text-right rounded-md text-grey-500 bg-red-50">
           {errors.root.message}
@@ -50,13 +62,11 @@ const SignupForm = () => {
         >
           Name
         </Label>
-        <Input
-          id="name"
-          type="text"
-          {...register('name')}
-        />
+        <Input id="name" type="text" {...register('name')} />
         {errors.name && (
-          <p className="mt-1 text-sm text-right text-grey-500">{errors.name.message}</p>
+          <p className="mt-1 text-sm text-right text-grey-500">
+            {errors.name.message}
+          </p>
         )}
       </div>
 
@@ -67,13 +77,11 @@ const SignupForm = () => {
         >
           Email
         </Label>
-        <Input
-          id="email"
-          type="email"
-          {...register('email')}
-        />
+        <Input id="email" type="email" {...register('email')} />
         {errors.email && (
-          <p className="mt-1 text-sm text-right text-grey-500">{errors.email.message}</p>
+          <p className="mt-1 text-sm text-right text-grey-500">
+            {errors.email.message}
+          </p>
         )}
       </div>
 
@@ -91,13 +99,19 @@ const SignupForm = () => {
         />
         <EyePassword isView={isView} setIsView={setIsView} />
         {errors.password && (
-          <p className="mt-1 text-sm text-right text-grey-500">{errors.password.message}</p>
+          <p className="mt-1 text-sm text-right text-grey-500">
+            {errors.password.message}
+          </p>
         )}
       </div>
 
       <div className="flex flex-col gap-4">
         <Button type="submit" className="mb-8" disabled={isSubmitting}>
-          {isSubmitting ? 'Loading...' : 'Sign Up'}
+          {isSubmitting ? (
+            <Loader2 size={16} className="animate-spin" />
+          ) : (
+            'Create an account'
+          )}
         </Button>
       </div>
     </form>

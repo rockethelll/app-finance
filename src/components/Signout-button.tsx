@@ -1,6 +1,6 @@
 'use client';
 
-import { authClient } from '@/lib/auth-client';
+import { signOut } from '@/lib/auth-client';
 import { useRouter } from 'next/navigation';
 import { Button } from './ui/button';
 
@@ -10,7 +10,7 @@ export function SignoutButton() {
   return (
     <Button
       onClick={async () => {
-        await authClient.signOut({
+        await signOut({
           fetchOptions: {
             onSuccess: () => {
               router.push('/login');
