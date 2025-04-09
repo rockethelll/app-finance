@@ -15,7 +15,7 @@
     "start": "next start",
     "lint": "next lint",
     "prepare": "husky",
-    "prisma:generate": "prisma generate --schema=./packages/db/schema.prisma"
+    "postinstall": "prisma generate"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix"
