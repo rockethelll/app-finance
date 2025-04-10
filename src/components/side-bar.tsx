@@ -9,7 +9,7 @@ const SideBar = () => {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <nav className="absolute bg-grey-900 rounded-t-xl lg:rounded-l-none rounded-r-xl h-[52px] bottom-0 w-full lg:top-0 lg:w-[300px] lg:h-screen flex justify-center items-center">
+    <nav className="absolute bg-grey-900 rounded-t-xl lg:rounded-l-none lg:rounded-r-xl h-[52px] md:h-[74px] bottom-0 w-full lg:top-0 lg:w-[300px] lg:h-screen flex justify-evenly items-end">
       {navIcons.map((icon) => (
         <Tabs
           key={icon.href}
