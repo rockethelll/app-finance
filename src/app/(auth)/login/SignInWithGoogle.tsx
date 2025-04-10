@@ -15,7 +15,7 @@ export const SignInWithGoogle = () => {
         await signIn.social(
           {
             provider: 'google',
-            callbackURL: '/dashboard',
+            callbackURL: '/overview',
           },
           {
             onRequest: () => {

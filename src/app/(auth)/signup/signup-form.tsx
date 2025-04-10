@@ -39,7 +39,7 @@ const SignupForm = () => {
       {
         onSuccess: () => {
           toast.success('Signed up successfully');
-          router.push('/dashboard');
+          router.push('/overview');
         },
         onError: (ctx: { error: { message: string } }) => {
           toast.error(ctx.error.message);

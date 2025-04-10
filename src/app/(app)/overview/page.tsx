@@ -6,7 +6,7 @@ export default async function DashboardPage() {
   const user = await getUser();
 
   return (
-    <div className='p-16'>
+    <div className="lg:pl-96">
       {user?.email}
       <br />
       {user?.name}
@@ -16,7 +16,7 @@ export default async function DashboardPage() {
       {user?.emailVerified}
       <br />
       <SignoutButton />
-      <div className="flex mt-8 gap-4">
+      <div className="flex gap-4 mt-8">
         <Link href="/login">Login</Link>
         <Link href="/signup ">Signup</Link>
       </div>

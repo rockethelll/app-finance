@@ -15,7 +15,7 @@ export const SignInWithGithub = () => {
         await signIn.social(
           {
             provider: 'github',
-            callbackURL: '/dashboard',
+            callbackURL: '/overview',
           },
           {
             onRequest: () => {

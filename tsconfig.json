@@ -28,7 +28,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/middleware.ts",
-    ".next/types/app/auth/signin/page.tsx"
   ],
   "exclude": ["node_modules"]
 }
