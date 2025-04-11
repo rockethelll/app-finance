@@ -20,10 +20,10 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           height={22}
           className="absolute top-15 left-15"
         />
-        <p className="absolute text-2xl font-bold text-white bottom-32 left-15 w-[80%] max-w-[300px] text-preset-1 whitespace-normal">
+        <p className="absolute text-2xl font-bold text-white bottom-32 left-15 w-[80%] max-w-[300px] custom-text-preset-1 whitespace-normal">
           Keep track of your money and save for the future
         </p>
-        <p className="absolute bottom-15 left-15 text-white w-[80%] max-w-[420px] text-preset-4 whitespace-normal">
+        <p className="absolute bottom-15 left-15 text-white w-[80%] max-w-[420px] custom-text-preset-4 whitespace-normal">
           Personal finance app puts you in control of your spending. Track
           transactions, set budgets, and add to savings pots easily.
         </p>

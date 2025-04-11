@@ -39,7 +39,7 @@ const LoginForm = () => {
       {
         onSuccess: () => {
           toast.success('Signed in successfully');
-          router.push('/dashboard');
+          router.push('/overview');
         },
         onError: (ctx: { error: { message: string } }) => {
           toast.error(ctx.error.message);
@@ -58,7 +58,7 @@ const LoginForm = () => {
       <div className="mb-4">
         <Label
           htmlFor="email"
-          className="mb-1 font-bold text-preset-5-bold text-grey-500"
+          className="mb-1 font-bold custom-text-preset-5-bold text-grey-500"
         >
           Email
         </Label>
@@ -73,7 +73,7 @@ const LoginForm = () => {
       <div className="relative mb-8">
         <Label
           htmlFor="password"
-          className="mb-1 font-bold text-preset-5-bold text-grey-500"
+          className="mb-1 font-bold custom-text-preset-5-bold text-grey-500"
         >
           Password
         </Label>
